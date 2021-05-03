@@ -1,0 +1,209 @@
+// Data properties (bits of data)
+interface HasDescription {
+    String description;
+}
+interface HasId {
+    String id;
+}
+interface HasPlantId {
+    String plantId;
+}
+interface HasName {
+    String name;
+}
+interface HasScheme {
+    String scheme;
+}
+interface HasUnitOfMeasurement {
+    String unitOfMeasurement;
+}
+interface HasLatitude {
+    float latitude;
+}
+interface HasLongitude {
+    float longitude;
+}
+interface HasProductionDate {
+    Date productionDate;
+}
+interface HasSaleDate {
+    Date saleDate;
+}
+interface HasDeliveryDate {
+    Date deliveryDate;
+}
+interface HasMaxValue {
+    Object maxValue;
+}
+interface HasMinValue {
+    Object maxValue;
+}
+interface HasValue {
+    Object value;
+}
+interface HasProductionRunId {
+    String productionRunId;
+}
+interface HasGreenhouseGasType {
+    String greenhouseGasType;
+}
+interface HasQuantificationMethodology {
+    String quantificationMethodology;
+}
+interface HasVerificationProtocol {
+    String verificationProtocol;
+}
+interface HasBenefitType {
+    String benefitType;
+}
+
+// Object properties (relationships)
+interface HasCharacterization {
+    Characterization characterization;
+}
+interface HasCertifyingAgent {
+    BusinessEntity agent;
+}
+interface HasAuditingAgent {
+    BusinessEntity agent;
+}
+interface HasManufacturer {
+    BusinessEntity producer;
+}
+interface HasOwner {
+    BusinessEntity owner;
+}
+interface HasOwner {
+    BusinessEntity owner;
+}
+interface HasGood {
+    Good good;
+}
+interface HasLocation {
+    Location location;
+}
+interface HasProductionPlant {
+    Plant productionPlant;
+}
+interface HasProductionDetails {
+    ProductionDetails productionDetails;
+}
+interface HasPreviousProductionDetails {
+    ProductionDetails previousProductionDetails;
+}
+interface HasProductionAmount {
+    QuantitiveValue productionAmount;
+}
+interface HasSaleDetails {
+    SaleDetails productionDetails;
+}
+interface HasSaleAmount {
+    QuantitiveValue saleAmount;
+}
+interface HasComplianceDocuments {
+    List<Document> complianceDocuments;
+}
+interface HasDeliveryMethod {
+    QuantitiveValue saleAmount;
+}
+interface HasPreviousSale {
+    SaleDetails previousSale;
+}
+interface HasEquipment {
+    Equipment equipment;
+}
+interface HasGreenhouseGasQuantification {
+    GreenhouseGasQuantification greenhouseGasQuantification;
+}
+interface HasGreenhouseGasEmissionValue {
+    QuantitiveValue greenhouseGasEmissionValue;
+}
+interface HasGreenhouseGasEmissionIntensity {
+    QuantitiveValue greenhouseGasEmissionIntensity;
+}
+interface HasGreenhouseGasEmissionBaseline {
+    QuantitiveValue greenhouseGasEmissionIntensity;
+}
+
+// Object classes (abstract and concrete classes)
+interface DeliveryMethod {
+    // Defined elsewhere
+}
+interface Equipment {
+    // Defined elsewhere
+}
+interface DocumentedBenefit extends HasBenefitType, HasComplianceDocuments {
+}
+interface QuantitiveValue extends HasUnitOfMeasurement, HasMaxValue, HasMinValue, HasValue {
+}
+interface Location extends HasLatitude, HasLongitude, HasName, HasDescription {
+}
+interface ProductionDetails extends HasProductionPlant, HasProductionRunId, HasProductionDate, HasProductionAmount, HasEquipment, HasComplianceDocuments, HasPreviousProductionDetails {
+}
+interface SaleDetails extends HasOwner, HasSaleDate, HasSaleAmount, HasDeliveryDate, HasDeliveryMethod, HasPreviousSale, HasComplianceDocuments {
+}
+interface GreenhouseGasQuantification extends HasGreenhouseGasType, 
+   HasGreenhouseGasEmissionValue, HasGreenhouseGasEmissionIntensity, HasGreenhouseGasEmissionBaseline, HasQuantificationMethodology, HasVerificationProtocol {
+}
+interface Sale extends HasSaleDetails {
+}
+interface Plant extends HasPlantId, HasName, HasLocation, HasOwner {
+}
+interface BusinessEntity extends HasLocation, HasName {
+}
+enum Characterization {
+    ByProduct,
+    RawMaterial,
+    Residue,
+    Waste
+}
+interface Document {
+}
+interface Certificate extends Document, HasCertifyingAgent, HasScheme {
+}
+interface AuditReport extends Document, HasAuditingAgent, HasScheme {
+}
+interface LegalDocument extends Document {
+}
+interface License extends LegalDocument {
+}
+interface Good extends HasName, HasDescription, HasManufacturer {
+}
+interface Commodity extends Good, HasCharacterization, HasProductionPlant, HasGreenhouseGasQuantification {
+}
+interface RegulatedCommodity extends Commodity {
+}
+interface TradedCommodity extends Commodity {
+}
+
+// Agricultural
+interface AgriculturalCommodity extends TradedCommodity {
+}
+interface ChemicalCommodity extends AgriculturalCommodity {
+}
+interface GrainCommodity extends AgriculturalCommodity {
+}
+interface LumberCommodity extends AgriculturalCommodity {
+}
+interface Meat extends AgriculturalCommodity {
+}
+
+// Energy
+interface EnergyCommodity extends TradedCommodity {
+}
+interface ElectricityCommodity extends EnergyCommodity {
+}
+interface EnergyTransmissionRightCommodity extends EnergyCommodity {
+}
+interface GasCommodity extends EnergyCommodity {
+}
+interface OilCommodity extends EnergyCommodity {
+}
+
+// Metal
+interface MetalCommodity extends TradedCommodity {
+}
+interface BaseMetalCommodity extends MetalCommodity {
+}
+interface PreciousMetalCommodity extends MetalCommodity {
+}

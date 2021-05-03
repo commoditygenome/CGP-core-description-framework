@@ -1,0 +1,496 @@
+Prefix(:=<http://www.semanticweb.org/cgp/ontologies/2021/1/cgp-stem#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/cgp/ontologies/2021/1/cgp-stem>
+Import(<http://purl.org/goodrelations/v1>)
+Import(<https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Relations/Relations/>)
+
+Declaration(Class(<http://purl.org/vocommons/voaf#Vocabulary>))
+Declaration(Class(:AgriculturalCommodity))
+Declaration(Class(:AuditReport))
+Declaration(Class(:BaseMetalCommodity))
+Declaration(Class(:BullionCommodity))
+Declaration(Class(:Certificate))
+Declaration(Class(:Characterization))
+Declaration(Class(:ChemicalCommodity))
+Declaration(Class(:Commodity))
+Declaration(Class(:Document))
+Declaration(Class(:DocumentedBenefits))
+Declaration(Class(:ElectricityCommodity))
+Declaration(Class(:EnergyCommodity))
+Declaration(Class(:EnergyTransmissionRightCommodity))
+Declaration(Class(:Equipment))
+Declaration(Class(:GasCommodity))
+Declaration(Class(:Good))
+Declaration(Class(:GrainCommodity))
+Declaration(Class(:GreenhouseGasQuantification))
+Declaration(Class(:LegalDocument))
+Declaration(Class(:LetterOfGuarantee))
+Declaration(Class(:License))
+Declaration(Class(:LumberCommodity))
+Declaration(Class(:MeatCommodity))
+Declaration(Class(:MetalCommodity))
+Declaration(Class(:OilCommodity))
+Declaration(Class(:Plant))
+Declaration(Class(:PreciousMetalCommodity))
+Declaration(Class(:ProductionDetails))
+Declaration(Class(:RegulatedCommodity))
+Declaration(Class(:Sale))
+Declaration(Class(:SaleDetails))
+Declaration(Class(:TradedCommodity))
+Declaration(Class(rdf:List))
+Declaration(ObjectProperty(:hasAuditingAgent))
+Declaration(ObjectProperty(:hasCertifyingAgent))
+Declaration(ObjectProperty(:hasCharacterization))
+Declaration(ObjectProperty(:hasComplianceDocuments))
+Declaration(ObjectProperty(:hasDeliveryMethod))
+Declaration(ObjectProperty(:hasDocumentedBenefits))
+Declaration(ObjectProperty(:hasEquipment))
+Declaration(ObjectProperty(:hasGood))
+Declaration(ObjectProperty(:hasGreenhouseGasEmissionBaseline))
+Declaration(ObjectProperty(:hasGreenhouseGasEmissionIntensity))
+Declaration(ObjectProperty(:hasGreenhouseGasEmissionValue))
+Declaration(ObjectProperty(:hasGreenhouseGasQuantification))
+Declaration(ObjectProperty(:hasLocation))
+Declaration(ObjectProperty(:hasOwner))
+Declaration(ObjectProperty(:hasPreviousSale))
+Declaration(ObjectProperty(:hasProductionAmount))
+Declaration(ObjectProperty(:hasProductionDetails))
+Declaration(ObjectProperty(:hasProductionPlant))
+Declaration(ObjectProperty(:hasSaleAmount))
+Declaration(ObjectProperty(:hasSaleDetails))
+Declaration(ObjectProperty(:isProducedAt))
+Declaration(DataProperty(:hasBenefitType))
+Declaration(DataProperty(:hasDeliveryDate))
+Declaration(DataProperty(:hasGreenhouseGasType))
+Declaration(DataProperty(:hasId))
+Declaration(DataProperty(:hasPlantId))
+Declaration(DataProperty(:hasProductionDate))
+Declaration(DataProperty(:hasProductionRunId))
+Declaration(DataProperty(:hasQuantificationMethodology))
+Declaration(DataProperty(:hasSaleDate))
+Declaration(DataProperty(:hasScheme))
+Declaration(DataProperty(:hasVerificationProtocol))
+Declaration(NamedIndividual(:ByProduct))
+Declaration(NamedIndividual(:RawMaterial))
+Declaration(NamedIndividual(:Residue))
+Declaration(NamedIndividual(:Waste))
+Declaration(AnnotationProperty(<http://creativecommons.org/ns#license>))
+Declaration(AnnotationProperty(<http://open.vocab.org/terms/defines>))
+Declaration(AnnotationProperty(<http://open.vocab.org/terms/describes>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/description>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/publisher>))
+Declaration(AnnotationProperty(<http://purl.org/vocab/vann/preferredNamespacePrefix>))
+Declaration(AnnotationProperty(<http://purl.org/vocab/vann/preferredNamespaceUri>))
+Declaration(AnnotationProperty(<http://www.w3.org/2007/05/powder-s#describedby>))
+Declaration(AnnotationProperty(<http://xmlns.com/foaf/0.1/homepage>))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://purl.org/goodrelations/v1#hasManufacturer> (has manufacturer (0..1))
+
+ObjectPropertyDomain(<http://purl.org/goodrelations/v1#hasManufacturer> :Good)
+
+# Object Property: <http://purl.org/goodrelations/v1#owns> (owns (0..*))
+
+InverseObjectProperties(<http://purl.org/goodrelations/v1#owns> :hasOwner)
+
+# Object Property: <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty> (qualitative product or service property (0..*))
+
+ObjectPropertyDomain(<http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty> :Good)
+
+# Object Property: <http://schema.org/manufacturer> (<http://schema.org/manufacturer>)
+
+EquivalentObjectProperties(<http://schema.org/manufacturer> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy>)
+
+# Object Property: :hasAuditingAgent (has auditing agent)
+
+AnnotationAssertion(rdfs:label :hasAuditingAgent "has auditing agent")
+ObjectPropertyDomain(:hasAuditingAgent :AuditReport)
+ObjectPropertyRange(:hasAuditingAgent <http://purl.org/goodrelations/v1#BusinessEntity>)
+
+# Object Property: :hasCertifyingAgent (has certifying agent)
+
+AnnotationAssertion(rdfs:label :hasCertifyingAgent "has certifying agent")
+ObjectPropertyDomain(:hasCertifyingAgent :Certificate)
+ObjectPropertyRange(:hasCertifyingAgent <http://purl.org/goodrelations/v1#BusinessEntity>)
+
+# Object Property: :hasCharacterization (has characterization)
+
+AnnotationAssertion(rdfs:label :hasCharacterization "has characterization")
+ObjectPropertyDomain(:hasCharacterization :Commodity)
+ObjectPropertyRange(:hasCharacterization :Characterization)
+
+# Object Property: :hasComplianceDocuments (has compliance documents)
+
+AnnotationAssertion(rdfs:label :hasComplianceDocuments "has compliance documents")
+ObjectPropertyDomain(:hasComplianceDocuments :DocumentedBenefits)
+ObjectPropertyDomain(:hasComplianceDocuments :GreenhouseGasQuantification)
+ObjectPropertyDomain(:hasComplianceDocuments :ProductionDetails)
+ObjectPropertyDomain(:hasComplianceDocuments :SaleDetails)
+ObjectPropertyRange(:hasComplianceDocuments rdf:List)
+
+# Object Property: :hasDeliveryMethod (has delivery method)
+
+AnnotationAssertion(rdfs:label :hasDeliveryMethod "has delivery method")
+ObjectPropertyDomain(:hasDeliveryMethod :SaleDetails)
+ObjectPropertyRange(:hasDeliveryMethod <http://purl.org/goodrelations/v1#DeliveryMethod>)
+
+# Object Property: :hasDocumentedBenefits (has documented benefits)
+
+AnnotationAssertion(rdfs:label :hasDocumentedBenefits "has documented benefits")
+ObjectPropertyDomain(:hasDocumentedBenefits :Commodity)
+ObjectPropertyRange(:hasDocumentedBenefits :DocumentedBenefits)
+
+# Object Property: :hasEquipment (has equipment)
+
+AnnotationAssertion(rdfs:label :hasEquipment "has equipment")
+
+# Object Property: :hasGood (has good)
+
+AnnotationAssertion(rdfs:label :hasGood "has good")
+ObjectPropertyRange(:hasGood :Good)
+
+# Object Property: :hasGreenhouseGasEmissionBaseline (has GHG emission baseline)
+
+AnnotationAssertion(rdfs:label :hasGreenhouseGasEmissionBaseline "has GHG emission baseline")
+ObjectPropertyDomain(:hasGreenhouseGasEmissionBaseline :GreenhouseGasQuantification)
+ObjectPropertyRange(:hasGreenhouseGasEmissionBaseline <http://purl.org/goodrelations/v1#QuantitativeValue>)
+
+# Object Property: :hasGreenhouseGasEmissionIntensity (has GHG emission intensity)
+
+AnnotationAssertion(rdfs:label :hasGreenhouseGasEmissionIntensity "has GHG emission intensity")
+ObjectPropertyDomain(:hasGreenhouseGasEmissionIntensity :GreenhouseGasQuantification)
+ObjectPropertyRange(:hasGreenhouseGasEmissionIntensity <http://purl.org/goodrelations/v1#QuantitativeValue>)
+
+# Object Property: :hasGreenhouseGasEmissionValue (has GHG emission value)
+
+AnnotationAssertion(rdfs:label :hasGreenhouseGasEmissionValue "has GHG emission value")
+ObjectPropertyDomain(:hasGreenhouseGasEmissionValue :GreenhouseGasQuantification)
+ObjectPropertyRange(:hasGreenhouseGasEmissionValue <http://purl.org/goodrelations/v1#QuantitativeValue>)
+
+# Object Property: :hasGreenhouseGasQuantification (has GHG quantification)
+
+AnnotationAssertion(rdfs:label :hasGreenhouseGasQuantification "has GHG quantification")
+ObjectPropertyDomain(:hasGreenhouseGasQuantification :Commodity)
+ObjectPropertyRange(:hasGreenhouseGasQuantification :GreenhouseGasQuantification)
+
+# Object Property: :hasLocation (has location)
+
+AnnotationAssertion(rdfs:label :hasLocation "has location")
+ObjectPropertyDomain(:hasLocation <http://purl.org/goodrelations/v1#BusinessEntity>)
+ObjectPropertyDomain(:hasLocation :Plant)
+ObjectPropertyRange(:hasLocation <http://purl.org/goodrelations/v1#Location>)
+
+# Object Property: :hasOwner (has owner)
+
+AnnotationAssertion(rdfs:label :hasOwner "has owner")
+ObjectPropertyDomain(:hasOwner :Good)
+ObjectPropertyDomain(:hasOwner :Plant)
+ObjectPropertyDomain(:hasOwner :SaleDetails)
+ObjectPropertyRange(:hasOwner <http://purl.org/goodrelations/v1#BusinessEntity>)
+
+# Object Property: :hasPreviousSale (has previous sale)
+
+AnnotationAssertion(rdfs:label :hasPreviousSale "has previous sale")
+ObjectPropertyDomain(:hasPreviousSale :SaleDetails)
+ObjectPropertyRange(:hasPreviousSale :SaleDetails)
+
+# Object Property: :hasProductionAmount (has production amount)
+
+AnnotationAssertion(rdfs:label :hasProductionAmount "has production amount")
+ObjectPropertyDomain(:hasProductionAmount :ProductionDetails)
+ObjectPropertyRange(:hasProductionAmount <http://purl.org/goodrelations/v1#QuantitativeValue>)
+
+# Object Property: :hasProductionDetails (has production details)
+
+AnnotationAssertion(rdfs:label :hasProductionDetails "has production details")
+ObjectPropertyDomain(:hasProductionDetails :Commodity)
+ObjectPropertyRange(:hasProductionDetails :ProductionDetails)
+
+# Object Property: :hasProductionPlant (has production plant)
+
+AnnotationAssertion(rdfs:label :hasProductionPlant "has production plant")
+EquivalentObjectProperties(:hasProductionPlant :isProducedAt)
+ObjectPropertyDomain(:hasProductionPlant :ProductionDetails)
+ObjectPropertyRange(:hasProductionPlant :Plant)
+
+# Object Property: :hasSaleAmount (has sale amount)
+
+AnnotationAssertion(rdfs:label :hasSaleAmount "has sale amount")
+ObjectPropertyDomain(:hasSaleAmount :SaleDetails)
+ObjectPropertyRange(:hasSaleAmount <http://purl.org/goodrelations/v1#QuantitativeValue>)
+
+# Object Property: :hasSaleDetails (has sale details)
+
+AnnotationAssertion(rdfs:label :hasSaleDetails "has sale details")
+ObjectPropertyDomain(:hasSaleDetails :Sale)
+ObjectPropertyRange(:hasSaleDetails :SaleDetails)
+
+# Object Property: :isProducedAt (is produced at)
+
+AnnotationAssertion(rdfs:label :isProducedAt "is produced at")
+
+# Object Property: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy> (is produced by)
+
+ObjectPropertyDomain(<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy> :AuditReport)
+ObjectPropertyDomain(<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy> :Certificate)
+ObjectPropertyDomain(<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy> :Good)
+ObjectPropertyRange(<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProducedBy> <http://purl.org/goodrelations/v1#BusinessEntity>)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <http://purl.org/goodrelations/v1#name> (name (0..1))
+
+DataPropertyDomain(<http://purl.org/goodrelations/v1#name> :Plant)
+
+# Data Property: :hasBenefitType (has benefit type)
+
+AnnotationAssertion(rdfs:label :hasBenefitType "has benefit type")
+DataPropertyDomain(:hasBenefitType :DocumentedBenefits)
+DataPropertyRange(:hasBenefitType xsd:string)
+
+# Data Property: :hasDeliveryDate (has delivery date)
+
+AnnotationAssertion(rdfs:label :hasDeliveryDate "has delivery date")
+DataPropertyDomain(:hasDeliveryDate :SaleDetails)
+DataPropertyRange(:hasDeliveryDate xsd:dateTime)
+
+# Data Property: :hasGreenhouseGasType (has greenhouse gas type)
+
+AnnotationAssertion(rdfs:label :hasGreenhouseGasType "has greenhouse gas type")
+DataPropertyDomain(:hasGreenhouseGasType :GreenhouseGasQuantification)
+DataPropertyRange(:hasGreenhouseGasType xsd:string)
+
+# Data Property: :hasId (has id)
+
+AnnotationAssertion(rdfs:label :hasId "has id")
+DataPropertyRange(:hasId xsd:string)
+
+# Data Property: :hasPlantId (has plant id)
+
+AnnotationAssertion(rdfs:label :hasPlantId "has plant id")
+DataPropertyDomain(:hasPlantId :Plant)
+DataPropertyRange(:hasPlantId xsd:string)
+
+# Data Property: :hasProductionDate (has production date)
+
+AnnotationAssertion(rdfs:label :hasProductionDate "has production date")
+DataPropertyDomain(:hasProductionDate :ProductionDetails)
+DataPropertyRange(:hasProductionDate xsd:dateTime)
+
+# Data Property: :hasProductionRunId (has production run id)
+
+AnnotationAssertion(rdfs:label :hasProductionRunId "has production run id")
+DataPropertyDomain(:hasProductionRunId :ProductionDetails)
+DataPropertyRange(:hasProductionRunId xsd:string)
+
+# Data Property: :hasQuantificationMethodology (has quantification methodology)
+
+AnnotationAssertion(rdfs:label :hasQuantificationMethodology "has quantification methodology")
+DataPropertyDomain(:hasQuantificationMethodology :GreenhouseGasQuantification)
+DataPropertyRange(:hasQuantificationMethodology xsd:string)
+
+# Data Property: :hasSaleDate (has sale date)
+
+AnnotationAssertion(rdfs:label :hasSaleDate "has sale date")
+DataPropertyDomain(:hasSaleDate :SaleDetails)
+DataPropertyRange(:hasSaleDate xsd:dateTime)
+
+# Data Property: :hasScheme (has scheme)
+
+AnnotationAssertion(rdfs:label :hasScheme "has scheme")
+DataPropertyDomain(:hasScheme :AuditReport)
+DataPropertyDomain(:hasScheme :Certificate)
+DataPropertyRange(:hasScheme xsd:string)
+
+# Data Property: :hasVerificationProtocol (has verification protocol)
+
+AnnotationAssertion(rdfs:label :hasVerificationProtocol "has verification protocol")
+DataPropertyDomain(:hasVerificationProtocol :GreenhouseGasQuantification)
+DataPropertyRange(:hasVerificationProtocol xsd:string)
+
+# Data Property: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/hasLatitude> (has latitude)
+
+DataPropertyDomain(<https://www.omg.org/spec/LCC/Countries/CountryRepresentation/hasLatitude> <http://purl.org/goodrelations/v1#Location>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :AgriculturalCommodity (Agricultural Commodity)
+
+AnnotationAssertion(rdfs:label :AgriculturalCommodity "Agricultural Commodity")
+SubClassOf(:AgriculturalCommodity :TradedCommodity)
+
+# Class: :AuditReport (:AuditReport)
+
+SubClassOf(:AuditReport :Document)
+
+# Class: :BaseMetalCommodity (Base Metal Commodity)
+
+AnnotationAssertion(rdfs:label :BaseMetalCommodity "Base Metal Commodity")
+SubClassOf(:BaseMetalCommodity :MetalCommodity)
+DisjointClasses(:BaseMetalCommodity :PreciousMetalCommodity)
+
+# Class: :BullionCommodity (:BullionCommodity)
+
+SubClassOf(:BullionCommodity :PreciousMetalCommodity)
+
+# Class: :Certificate (:Certificate)
+
+SubClassOf(:Certificate :Document)
+
+# Class: :Characterization (Commodity Characterization)
+
+AnnotationAssertion(rdfs:label :Characterization "Commodity Characterization")
+
+# Class: :ChemicalCommodity (Chemical Commodity)
+
+AnnotationAssertion(rdfs:label :ChemicalCommodity "Chemical Commodity")
+SubClassOf(:ChemicalCommodity :AgriculturalCommodity)
+
+# Class: :Commodity (Commodity)
+
+AnnotationAssertion(rdfs:label :Commodity "Commodity")
+SubClassOf(:Commodity :Good)
+SubClassOf(:Commodity ObjectExactCardinality(1 :hasCharacterization :Characterization))
+
+# Class: :DocumentedBenefits (Documented Benefits)
+
+AnnotationAssertion(rdfs:label :DocumentedBenefits "Documented Benefits")
+
+# Class: :ElectricityCommodity (Electricity Commodity)
+
+AnnotationAssertion(rdfs:label :ElectricityCommodity "Electricity Commodity")
+SubClassOf(:ElectricityCommodity :EnergyCommodity)
+
+# Class: :EnergyCommodity (Energy Commodity)
+
+AnnotationAssertion(rdfs:label :EnergyCommodity "Energy Commodity")
+SubClassOf(:EnergyCommodity :TradedCommodity)
+
+# Class: :EnergyTransmissionRightCommodity (Energy Transmission Right Commodity)
+
+AnnotationAssertion(rdfs:label :EnergyTransmissionRightCommodity "Energy Transmission Right Commodity")
+SubClassOf(:EnergyTransmissionRightCommodity :EnergyCommodity)
+
+# Class: :GasCommodity (Gas Commodity)
+
+AnnotationAssertion(rdfs:label :GasCommodity "Gas Commodity")
+SubClassOf(:GasCommodity :EnergyCommodity)
+
+# Class: :Good (Good)
+
+AnnotationAssertion(rdfs:label :Good "Good")
+AnnotationAssertion(rdfs:seeAlso :Good <http://purl.org/goodrelations/v1#ProductOrService>)
+SubClassOf(:Good DataSomeValuesFrom(<http://www.omg.org/techprocess/ab/SpecificationMetadata/hasDescription> xsd:string))
+SubClassOf(:Good DataSomeValuesFrom(<https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/hasName> xsd:string))
+
+# Class: :GrainCommodity (Grain Commodity)
+
+AnnotationAssertion(rdfs:label :GrainCommodity "Grain Commodity")
+SubClassOf(:GrainCommodity :AgriculturalCommodity)
+
+# Class: :GreenhouseGasQuantification (Greenhouse Gas Quantification)
+
+AnnotationAssertion(rdfs:label :GreenhouseGasQuantification "Greenhouse Gas Quantification")
+
+# Class: :LegalDocument (:LegalDocument)
+
+SubClassOf(:LegalDocument :Document)
+
+# Class: :LetterOfGuarantee (:LetterOfGuarantee)
+
+SubClassOf(:LetterOfGuarantee :LegalDocument)
+
+# Class: :License (:License)
+
+SubClassOf(:License :LegalDocument)
+
+# Class: :LumberCommodity (Lumber Commodity)
+
+AnnotationAssertion(rdfs:label :LumberCommodity "Lumber Commodity")
+SubClassOf(:LumberCommodity :AgriculturalCommodity)
+
+# Class: :MeatCommodity (Meat Commodity)
+
+AnnotationAssertion(rdfs:label :MeatCommodity "Meat Commodity")
+SubClassOf(:MeatCommodity :AgriculturalCommodity)
+
+# Class: :MetalCommodity (Metal Commodity)
+
+AnnotationAssertion(rdfs:label :MetalCommodity "Metal Commodity")
+SubClassOf(:MetalCommodity :TradedCommodity)
+
+# Class: :OilCommodity (Oil Commodity)
+
+AnnotationAssertion(rdfs:label :OilCommodity "Oil Commodity")
+SubClassOf(:OilCommodity :EnergyCommodity)
+
+# Class: :PreciousMetalCommodity (Precious Metal Commodity)
+
+AnnotationAssertion(rdfs:label :PreciousMetalCommodity "Precious Metal Commodity")
+SubClassOf(:PreciousMetalCommodity :MetalCommodity)
+
+# Class: :ProductionDetails (Production Details)
+
+AnnotationAssertion(rdfs:label :ProductionDetails "Production Details")
+
+# Class: :RegulatedCommodity (Regulated Commodity)
+
+AnnotationAssertion(rdfs:label :RegulatedCommodity "Regulated Commodity")
+SubClassOf(:RegulatedCommodity :Commodity)
+DisjointClasses(:RegulatedCommodity :TradedCommodity)
+
+# Class: :SaleDetails (Sale Details)
+
+AnnotationAssertion(rdfs:label :SaleDetails "Sale Details")
+
+# Class: :TradedCommodity (Traded Commodity)
+
+AnnotationAssertion(rdfs:label :TradedCommodity "Traded Commodity")
+SubClassOf(:TradedCommodity :Commodity)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :ByProduct (By Product)
+
+AnnotationAssertion(rdfs:label :ByProduct "By Product")
+ClassAssertion(:Characterization :ByProduct)
+
+# Individual: :RawMaterial (Raw Material)
+
+AnnotationAssertion(rdfs:label :RawMaterial "Raw Material")
+ClassAssertion(:Characterization :RawMaterial)
+
+# Individual: :Residue (Residue)
+
+AnnotationAssertion(rdfs:label :Residue "Residue")
+ClassAssertion(:Characterization :Residue)
+
+# Individual: :Waste (Waste)
+
+AnnotationAssertion(rdfs:label :Waste "Waste")
+ClassAssertion(:Characterization :Waste)
+
+
+DisjointClasses(:AgriculturalCommodity :ChemicalCommodity :EnergyCommodity :MetalCommodity)
+DisjointClasses(:ElectricityCommodity :EnergyTransmissionRightCommodity :GasCommodity :OilCommodity)
+DisjointClasses(:GrainCommodity :LumberCommodity :MeatCommodity)
+)
