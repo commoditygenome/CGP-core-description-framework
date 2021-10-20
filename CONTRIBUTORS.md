@@ -11,6 +11,6 @@ otherwise significantly contributed to the development of this ontology.
 
 A big THANK YOU goes to:
 
-    Joe Madden at Xpansiv and Alex Joss at Climate Chamions for their tireless efforts
+    Joe Madden at Xpansiv and Alex Joss at Climate Champions for their tireless efforts
     in supporting CGP.
 
