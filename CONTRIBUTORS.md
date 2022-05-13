@@ -7,8 +7,8 @@ Here is a list of MUCH-APPRECIATED CONTRIBUTORS -- people who have
 submitted patches, reported bugs, added translations, helped answer questions, or 
 otherwise significantly contributed to the development of this ontology.
 
- * Gavin Nicol <gavin at contextlabs.com> for core ontology and architectural guidance
- * Dan  Harple <dan@contextlabs.com> for contributing the Pentalytic Framework as the core methodology for the CGP.
+ * Gavin Nicol (gavin at contextlabs.com) for the core ontology and architectural guidance
+ * Dan Harple (dan at contextlabs.com) for contributing the Pentalytic Framework as the core methodology for the CGP.
 
 A big THANK YOU to:
 
